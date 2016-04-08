@@ -331,8 +331,22 @@ func (admin *Admin) compile() {
 	})
 }
 
+type responseWriter struct {
+	writer http.ResponseWriter
+	status int
+}
+
+func (rw *responseWriter) Header() http.Header           { return rw.writer.Header() }
+func (rw *responseWriter) Write(buf []byte) (int, error) { return rw.writer.Write(buf) }
+func (rw *responseWriter) WriteHeader(status int) {
+	rw.status = status
+	rw.writer.WriteHeader(status)
+}
+
 // ServeHTTP dispatches the handler registered in the matched route
 func (admin *Admin) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+	w = &responseWriter{writer: w, status: 200}
+
 	var relativePath = strings.TrimPrefix(req.URL.Path, admin.router.Prefix)
 	var context = admin.NewContext(w, req)
 
@@ -344,7 +358,13 @@ func (admin *Admin) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	defer func() func() {
 		begin := time.Now()
 		return func() {
-			log.Printf("Finish [%s] %s Took %.2fms\n", req.Method, req.RequestURI, time.Now().Sub(begin).Seconds()*1000)
+			log.Printf(
+				"[QOR] (%s) %d %s %s Took %.2fms\n",
+				time.Now().Format("2006-01-02 15:04:05"),
+				w.(*responseWriter).status,
+				req.Method, req.RequestURI,
+				time.Now().Sub(begin).Seconds()*1000,
+			)
 		}
 	}()()
 
