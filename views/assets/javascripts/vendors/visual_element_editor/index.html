@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Visual element editor demo</title>
+  <link rel="stylesheet" href="/js/jquery-ui.css" />
+  <script src="/js/jquery-1.7.1.js"></script>
+  <script src="/js/jquery-ui.js"></script>
+
+  <link rel="stylesheet" href="./colorpicker/css/colorpicker.css" type="text/css" />
+  <link rel="stylesheet" href="./colorpicker/css/layout.css" type="text/css" media="screen" />
+  <script type="text/javascript" src="./colorpicker/js/colorpicker.js"></script>
+  <link rel="stylesheet" href="./style.css" type="text/css" media="screen" />
+  <script type="text/javascript" src="./jquery.mustache.min.js"></script>
+  <script type="text/javascript" src="./app.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".bannerEditor").vee({
+        width: "960px",
+        height: "400px",
+        datas : {
+          'addtitle' : {
+            'template' : '<a href="{{href}}" style="font-size: {{font-size}}" >{{text}}</a>',
+            'keys'     : {
+              'href' : {'default' : 'http://baidu.com', 'type' : 'input'},
+              'text' : {'default': '百度', 'type' : 'input'}
+            }
+          },
+          'color' : {
+            'template' : '<a href="{{href}}" style="color: {{color}}">{{title}}</a>',
+            'keys'     : {
+              'href'  : {'default' : 'http://google.com', 'type' : 'input'},
+              'title' : {'default' : 'google', 'type' : 'input'},
+              'color' : {'default' : "rgb(252, 0, 0)", 'type' : 'color'}}
+          },
+          'select' : {
+            'template' : '<a href="{{href}}" style="font-size: {{font-size}}">{{title}}</a>',
+            'keys'     : {
+              'href' : {'default' : 'http://google.com', 'type' : 'input'},
+              'title' : {'default' : 'Font Google', 'type' : 'input'},
+              'font-size' : {'default' : '18px', 'type' : 'select', 'options' : ["12px", "14px", "18px"]}
+            }
+          },
+          'desc' : {
+            'template' : '<div>{{text}}</div>',
+            'keys' : {
+              'text' : { 'default' : "test", 'type' : 'textarea' }
+            }
+          }
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+
+
+<div id="xxx_banner" class="banner fieldset">
+  <textarea class="bannerEditor banner-editor" name="bannerEditor"></textarea>
+</div>
+
+</body>
+</html>
