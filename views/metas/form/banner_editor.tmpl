@@ -7,9 +7,18 @@
 <script type="text/javascript" src="/admin/assets/javascripts/vendors/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/admin/assets/javascripts/vendors/visual_element_editor/visual_element_editor.js"></script>
 <script type="text/javascript" src="/admin/assets/javascripts/qor-banner-editor.js"></script>
+
 <div class="qor-field">
-  Hello
-  <div class="bannerEditor">
+  <label class="qor-field__label mdl-textfield__label" for="{{.InputId}}">
+    {{meta_label .Meta}}
+  </label>
+
+  <div class="qor-field__show">
+    {{.Value}}
   </div>
+
+  <textarea class="bannerEditor banner-editor" name="{{.InputName}}">
+    {{.Value}}
+  </textarea>
 </div>
 
