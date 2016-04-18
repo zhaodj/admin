@@ -1,6 +1,9 @@
 $(document).ready(function(){
+  $(".js-banner-editor").each(function() {
+    $(this).parents(".qor-field__block").css("overflow-x", "scroll");
+  });
   $(".js-banner-editor").vee({
-    width: "960px",
+    width: "1060px",
     height: "400px",
     datas : {
       "sub_heading" : {
