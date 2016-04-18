@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $(".bannerEditor").vee({
+  $(".js-banner-editor").vee({
     width: "960px",
     height: "400px",
     datas : {

@@ -9,16 +9,19 @@
 <script type="text/javascript" src="/admin/assets/javascripts/qor-banner-editor.js"></script>
 
 <div class="qor-field">
-  <label class="qor-field__label mdl-textfield__label" for="{{.InputId}}">
-    {{meta_label .Meta}}
-  </label>
+  <div class="mdl-textfield mdl-textfield--full-width mdl-js-textfield">
+    <label class="qor-field__label mdl-textfield__label" for="{{.InputId}}">
+      {{meta_label .Meta}}
+    </label>
 
-  <div class="qor-field__show">
-    {{.Value}}
+    <div class="qor-field__show">
+      {{.Value}}
+    </div>
+
+    <div class="qor-field__edit">
+      <textarea class="banner-editor js-banner-editor" name="{{.InputName}}">
+        {{.Value}}
+      </textarea>
+    </div>
   </div>
-
-  <textarea class="bannerEditor banner-editor" name="{{.InputName}}">
-    {{.Value}}
-  </textarea>
 </div>
-
