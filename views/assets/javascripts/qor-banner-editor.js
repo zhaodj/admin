@@ -3,8 +3,8 @@ $(document).ready(function(){
     $(this).parents(".qor-field__block").css("overflow-x", "scroll");
   });
   $(".js-banner-editor").vee({
-    width: "1060px",
-    height: "400px",
+    width: "1060",
+    height: "400",
     datas : {
       "sub_heading" : {
         "title" : "Sub Header",

@@ -6,7 +6,7 @@
       contentSelect: ".veeEditorContent",
       width: "100%",
       height: "100%",
-      flex: false, /* Default set vee content style to { position: absolute, width: 100%: height: 100%; } */
+      flex: false,
       datas : {},
       editingElement: null
     },
@@ -38,7 +38,7 @@
       if($('.veeContent', vee.defaults.contentSelect).size() == 0){
         var veeContentTemplate = $('<div class="veeContent"></div>');
         var position = vee.defaults.flex ? 'absolute' : 'relative';
-        veeContentTemplate.css({ 'position': position, 'width': vee.defaults.width, 'height': vee.defaults.height });
+        veeContentTemplate.css({ 'position': position, 'width': vee.defaults.width, 'height': vee.defaults.height, 'min-height': 200 });
         $(vee.defaults.contentSelect).html(veeContentTemplate);
       }
 
@@ -104,6 +104,9 @@
           },
           stop: function() {
             $("#veeRuler").hide();
+            var $container = $(this).parents(".veeEditorContent");
+            $(this).css("left",parseInt($(this).css("left")) / ($container.width() / 100)+"%");
+            $(this).css("top",parseInt($(this).css("top")) / ($container.height() / 100)+"%");
           },
           grid: [ 5,5 ],
           containment: 'parent'
