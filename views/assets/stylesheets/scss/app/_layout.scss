@@ -3,9 +3,7 @@
 
   .mdl-layout__content{
     overflow: auto;
-    &.has-header{
-      padding-top: 48px;
-    }
+    padding-top: 48px;
     &::-webkit-scrollbar {
       width: 8px;
       height: 8px;
@@ -143,7 +141,6 @@
   position: fixed;
   top: 64px;
   min-height: 40px;
-  height: 48px;
   margin-bottom: 24px;
   padding: 0 24px;
   width: calc(100% - 240px);
@@ -175,9 +172,17 @@
   z-index: 4;
 }
 
+.qor-page__header .qor-page-subnav__header{
+  width: calc(100% + 48px);
+}
 .qor-page-subnav__header{
-  padding: 0;
+  padding: 0 !important;
   background-color: transparent;
+  margin: 0 -24px;
+  .mdl-layout__tab{
+    min-width: 128px;
+    box-sizing: border-box;
+  }
   .mdl-layout__tab-bar{
     padding: 0;
   }
@@ -206,6 +211,12 @@
 
 .mdl-layout__header-row{
   padding-right: 12px;
+}
+
+.qor-page__tips{
+  text-align: center;
+  font-size: 20px;
+  margin-top: 48px;
 }
 
 @media screen and (max-width: 1024px){
